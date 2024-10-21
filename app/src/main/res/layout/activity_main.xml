@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/goBack"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"
+            android:src="@drawable/back_24"
+            app:tint="@color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5mdp"
+                android:text="Monthly Details For"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12font_mdp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_5mdp"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:layout_marginBottom="@dimen/_5mdp"
+                android:background="@drawable/click_effect_gray_white"
+                android:elevation="@dimen/_3mdp"
+                android:paddingTop="@dimen/_5mdp"
+                android:paddingBottom="@dimen/_5mdp">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <!--        <ImageView-->
+        <!--            android:id="@+id/changeView"-->
+        <!--            android:layout_width="25dp"-->
+        <!--            android:layout_height="25dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            app:tint="@color/white"-->
+        <!--            android:layout_marginStart="@dimen/_10mdp"-->
+        <!--            android:layout_marginEnd="@dimen/_10mdp"-->
+        <!--            android:src="@drawable/week_image_24"/>-->
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/optionMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:padding="@dimen/_5mdp"
+        android:background="@drawable/bg_light_yellow_corner"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/selectedDateRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:layout_gravity="center"
+            android:text="@string/app_name"/>
+        <TextView
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginEnd="@dimen/_10mdp"
+            android:text="Cancel"
+            android:textSize="@dimen/_12font_mdp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:maxLines="2"
+            android:background="@drawable/background_button_effect"
+            android:textStyle="italic"
+            android:padding="@dimen/_5mdp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/saveBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Save"
+            android:textSize="@dimen/_12font_mdp"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/_5mdp"
+            android:textAllCaps="false"
+            android:maxLines="2"
+            android:background="@drawable/background_button_effect"
+            android:textStyle="italic"
+            android:padding="@dimen/_5mdp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp">
+
+        <ImageView
+            android:id="@+id/previousDateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:onClick="previousWeekAction"
+            android:padding="5dp"
+            app:tint="@color/white"
+            android:background="@drawable/background_button_effect"
+            app:srcCompat="@drawable/back_24" />
+
+        <TextView
+            android:id="@+id/monthYearTV"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Feb 2021"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:id="@+id/nextDateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:layout_marginEnd="15dp"
+            android:padding="5dp"
+            app:tint="@color/white"
+            android:background="@drawable/background_button_effect"
+            android:onClick="nextWeekAction"
+            app:srcCompat="@drawable/back_24" />
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendarRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2mdp"
+        android:overScrollMode="never"
+        tools:itemCount="7"
+        android:scrollbars="none"
+        tools:listitem="@layout/calender_cell" />
+
+</LinearLayout>
