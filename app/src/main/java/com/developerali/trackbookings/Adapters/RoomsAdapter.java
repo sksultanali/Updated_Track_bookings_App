@@ -57,7 +57,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
         // Bind the room data here (if any)
 
         // Set click listener for each room item
-        holder.binding.roomText.setText("R"+(position+1));
+        holder.binding.roomText.setText(""+(position+1));
         holder.itemView.setOnClickListener(v -> {
             if (roomClickListener != null) {
                 roomClickListener.onRoomClick(holder.binding.roomText.getText().toString(), currentDate);
@@ -71,8 +71,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()){
-                            if (snapshot.child("R"+(position+1)).exists()){
-                                boolean booked = snapshot.child("R"+(position+1)).getValue(Boolean.class);
+                            if (snapshot.child(""+(position+1)).exists()){
+                                boolean booked = snapshot.child(""+(position+1)).getValue(Boolean.class);
                                 if (booked){
                                     holder.binding.roomText.setBackground(activity.getDrawable(R.drawable.bg_light_red_corners));
                                 }else {
@@ -82,7 +82,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
                                         //holder.binding.roomText.setText("-");
                                         holder.binding.roomText.setTextColor(activity.getColor(R.color.defTextCol));
                                     }
-                                    holder.binding.roomText.setBackground(activity.getDrawable(R.drawable.bg_light_blue_corner));
+                                    holder.binding.roomText.setBackground(activity.getDrawable(R.drawable.bg_black_border));
                                 }
                             }else {
                                 if (currentDate.getDayOfWeek().toString().equalsIgnoreCase("sunday")){
@@ -91,7 +91,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
                                     //holder.binding.roomText.setText("-");
                                     holder.binding.roomText.setTextColor(activity.getColor(R.color.defTextCol));
                                 }
-                                holder.binding.roomText.setBackground(activity.getDrawable(R.drawable.bg_light_blue_corner));
+                                holder.binding.roomText.setBackground(activity.getDrawable(R.drawable.bg_black_border));
                             }
                         }else {
                             if (currentDate.getDayOfWeek().toString().equalsIgnoreCase("sunday")){
@@ -100,7 +100,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
                                 //holder.binding.roomText.setText("-");
                                 holder.binding.roomText.setTextColor(activity.getColor(R.color.defTextCol));
                             }
-                            holder.binding.roomText.setBackground(activity.getDrawable(R.drawable.bg_light_blue_corner));
+                            holder.binding.roomText.setBackground(activity.getDrawable(R.drawable.bg_black_border));
                         }
                     }
 

@@ -14,8 +14,12 @@ import com.developerali.trackbookings.CalenderHelper;
 import com.developerali.trackbookings.Models.PropertiesModel;
 import com.developerali.trackbookings.databinding.CalenderCellBinding;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import com.developerali.trackbookings.R;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> {
@@ -49,9 +53,10 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         if (date == null) {
             holder.binding.cellDayText.setText("");
         } else {
-            // Display day of the month and day of the week
-            String dayOfWeek = date.getDayOfWeek().toString().toLowerCase();
-            holder.binding.cellDayText.setText(date.getDayOfMonth() + "\n" + dayOfWeek);
+            // Display day of the month and day of the week. Above is okay
+            DayOfWeek dayOfWeek = date.getDayOfWeek();
+            String abbreviatedDayOfWeek = CalenderHelper.getAbbreviatedDayOfWeek(dayOfWeek); // Get abbreviated day
+            holder.binding.cellDayText.setText(date.getDayOfMonth() + "\n" + abbreviatedDayOfWeek);
 
             // Set up the RoomsAdapter with room click listener
             RoomsAdapter roomsAdapter = new RoomsAdapter(activity, propertiesModel, new RoomsAdapter.RoomClickListener() {

@@ -39,6 +39,39 @@ public class CalenderHelper {
         }
     }
 
+    public static String getAbbreviatedDayOfWeek(DayOfWeek dayOfWeek) {
+        String abbreviatedDayOfWeek;
+
+        switch (dayOfWeek) {
+            case MONDAY:
+                abbreviatedDayOfWeek = "Mon";
+                break;
+            case TUESDAY:
+                abbreviatedDayOfWeek = "Tue";
+                break;
+            case WEDNESDAY:
+                abbreviatedDayOfWeek = "Wed";
+                break;
+            case THURSDAY:
+                abbreviatedDayOfWeek = "Thu";
+                break;
+            case FRIDAY:
+                abbreviatedDayOfWeek = "Fri";
+                break;
+            case SATURDAY:
+                abbreviatedDayOfWeek = "Sat";
+                break;
+            case SUNDAY:
+                abbreviatedDayOfWeek = "Sun";
+                break;
+            default:
+                abbreviatedDayOfWeek = ""; // Handle unexpected values
+                break;
+        }
+
+        return abbreviatedDayOfWeek;
+    }
+
     public static ArrayList<LocalDate> daysInMonthArray(LocalDate date) {
         ArrayList<LocalDate> daysInMonthArray = new ArrayList<>();
         YearMonth yearMonth = YearMonth.from(date);

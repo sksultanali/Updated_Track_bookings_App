@@ -10,10 +10,10 @@
         android:id="@+id/roomText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="R1"
-        android:textSize="@dimen/_10font_mdp"
+        android:text="1"
+        android:textSize="@dimen/_12font_mdp"
         android:gravity="center"
-        android:background="@drawable/bg_light_blue_corner"
+        android:background="@drawable/bg_black_border"
         android:textStyle="italic"
         android:layout_gravity="center"
         android:textColor="@color/black"/>
