@@ -62,15 +62,15 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
-        <!--        <ImageView-->
-        <!--            android:id="@+id/changeView"-->
-        <!--            android:layout_width="25dp"-->
-        <!--            android:layout_height="25dp"-->
-        <!--            android:layout_gravity="center"-->
-        <!--            app:tint="@color/white"-->
-        <!--            android:layout_marginStart="@dimen/_10mdp"-->
-        <!--            android:layout_marginEnd="@dimen/_10mdp"-->
-        <!--            android:src="@drawable/week_image_24"/>-->
+                <ImageView
+                    android:id="@+id/changeView"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    app:tint="@color/white"
+                    android:layout_marginStart="@dimen/_10mdp"
+                    android:layout_marginEnd="@dimen/_10mdp"
+                    android:src="@drawable/week_image_24"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/optionMenu"
@@ -81,49 +81,73 @@
         android:layout_gravity="center"
         android:padding="@dimen/_5mdp"
         android:background="@drawable/bg_light_yellow_corner"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <TextView
             android:id="@+id/selectedDateRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
+            android:gravity="center"
             android:textColor="@color/black"
-            android:layout_marginStart="@dimen/_5mdp"
+            android:layout_marginStart="@dimen/_10mdp"
             android:layout_gravity="center"
             android:text="@string/app_name"/>
-        <TextView
-            android:id="@+id/cancelBtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginEnd="@dimen/_10mdp"
-            android:text="Cancel"
-            android:textSize="@dimen/_12font_mdp"
-            android:gravity="center"
-            android:textAllCaps="false"
-            android:maxLines="2"
-            android:background="@drawable/background_button_effect"
-            android:textStyle="italic"
-            android:padding="@dimen/_5mdp"
-            android:layout_gravity="center"
-            android:textColor="@color/white"/>
-        <TextView
-            android:id="@+id/saveBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Save"
-            android:textSize="@dimen/_12font_mdp"
-            android:gravity="center"
-            android:layout_marginEnd="@dimen/_5mdp"
-            android:textAllCaps="false"
-            android:maxLines="2"
-            android:background="@drawable/background_button_effect"
-            android:textStyle="italic"
-            android:padding="@dimen/_5mdp"
-            android:layout_gravity="center"
-            android:textColor="@color/white"/>
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/cancelBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:text="Cancel"
+                android:textSize="@dimen/_12font_mdp"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:maxLines="2"
+                android:background="@drawable/background_button_effect"
+                android:textStyle="italic"
+                android:padding="@dimen/_5mdp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/deleteBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:text="Delete"
+                android:textSize="@dimen/_12font_mdp"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:maxLines="2"
+                android:background="@drawable/background_button_effect"
+                android:textStyle="italic"
+                android:padding="@dimen/_5mdp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Save"
+                android:textSize="@dimen/_12font_mdp"
+                android:gravity="center"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:textAllCaps="false"
+                android:maxLines="2"
+                android:background="@drawable/background_button_effect"
+                android:textStyle="italic"
+                android:padding="@dimen/_5mdp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -171,7 +195,8 @@
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_2mdp"
+        android:layout_marginStart="@dimen/_5mdp"
+        android:layout_marginEnd="@dimen/_5mdp"
         android:overScrollMode="never"
         tools:itemCount="7"
         android:scrollbars="none"

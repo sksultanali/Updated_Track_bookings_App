@@ -10,6 +10,7 @@
     <color name="light_blue">#BEB0BCFF</color>
     <color name="icon_color">#757272</color>
     <color name="darkGray">#D5D7DC</color>
+    <color name="defTextCol">#ED9E9999</color>
 
     <color name="selected_date">#FFCCCCCC</color>
     <color name="green">#4CAF50</color>

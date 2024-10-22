@@ -31,8 +31,12 @@ public class CalenderHelper {
     }
 
     public static String dateKey(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
-        return date.format(formatter);
+        if (date == null){
+            return "";
+        }else {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+            return date.format(formatter);
+        }
     }
 
     public static ArrayList<LocalDate> daysInMonthArray(LocalDate date) {

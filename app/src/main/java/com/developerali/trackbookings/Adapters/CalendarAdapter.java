@@ -23,6 +23,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     public final ArrayList<LocalDate> days;
     private final SelectionListner onItemListener;
     private final Activity activity;
+    LocalDate today;
     private final PropertiesModel propertiesModel;
 
     public CalendarAdapter(Activity activity, ArrayList<LocalDate> days, SelectionListner onItemListener, PropertiesModel propertiesModel) {
@@ -30,6 +31,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         this.days = days;
         this.onItemListener = onItemListener;
         this.propertiesModel = propertiesModel;
+        today = LocalDate.now();
     }
 
     @NonNull
@@ -52,13 +54,24 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
             holder.binding.cellDayText.setText(date.getDayOfMonth() + "\n" + dayOfWeek);
 
             // Set up the RoomsAdapter with room click listener
-            RoomsAdapter roomsAdapter = new RoomsAdapter(activity, propertiesModel.getTotalRoom(), new RoomsAdapter.RoomClickListener() {
+            RoomsAdapter roomsAdapter = new RoomsAdapter(activity, propertiesModel, new RoomsAdapter.RoomClickListener() {
                 @Override
                 public void onRoomClick(String roomName, LocalDate localDate) {
                     // Handle room selection with both room name and date
                     onItemListener.onRoomSelected(roomName, date);
                 }
             });
+
+            roomsAdapter.setDate(date);
+
+            if (days.get(position).isBefore(today)) {
+                holder.binding.cellDayText.setTextColor(activity.getColor(R.color.defTextCol));
+            }
+
+            if (days.get(position).getDayOfWeek().toString().equalsIgnoreCase("sunday")){
+                holder.binding.cellDayText.setTextColor(activity.getColor(R.color.red));
+            }
+
 
             // Setup RecyclerView for rooms
             GridLayoutManager layoutManager = new GridLayoutManager(activity, propertiesModel.getTotalRoom());
