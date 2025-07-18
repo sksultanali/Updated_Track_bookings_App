@@ -1,20 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="@dimen/_5mdp"
     android:id="@+id/parentView">
 
-    <TextView
-        android:id="@+id/roomText"
+    <LinearLayout
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="1"
-        android:textSize="@dimen/_12font_mdp"
         android:gravity="center"
         android:background="@drawable/bg_black_border"
-        android:textStyle="italic"
-        android:layout_gravity="center"
-        android:textColor="@color/black"/>
-</LinearLayout>
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/roomText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="@dimen/_11font_mdp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="@dimen/_11font_mdp"
+            android:singleLine="true"
+            android:gravity="center"
+            android:paddingStart="@dimen/_2mdp"
+            android:paddingEnd="@dimen/_2mdp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/yellow"/>
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/remarkIcon"
+        android:layout_width="@dimen/_6mdp"
+        android:layout_height="@dimen/_6mdp"
+        android:layout_margin="@dimen/_5mdp"
+        android:src="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/mainLayout"
+        app:layout_constraintEnd_toEndOf="@+id/mainLayout"
+        app:layout_constraintTop_toTopOf="@+id/mainLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

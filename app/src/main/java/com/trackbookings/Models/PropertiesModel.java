@@ -1,4 +1,4 @@
-package com.developerali.trackbookings.Models;
+package com.trackbookings.Models;
 
 public class PropertiesModel {
 

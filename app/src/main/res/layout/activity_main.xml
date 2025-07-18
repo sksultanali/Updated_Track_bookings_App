@@ -6,71 +6,136 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.trackbookings.MainActivity">
 
     <LinearLayout
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple"
-        android:elevation="10dp"
-        android:orientation="horizontal"
-        android:padding="10dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue_purple"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="@dimen/_10mdp"
+        android:paddingEnd="@dimen/_10mdp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/goBack"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="10dp"
-            android:visibility="gone"
-            android:src="@drawable/back_24"
-            app:tint="@color/white" />
+<!--        <ImageView-->
+<!--            android:id="@+id/goBack"-->
+<!--            android:layout_width="25dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:visibility="gone"-->
+<!--            android:src="@drawable/back_24"-->
+<!--            app:tint="@color/white" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/_5mdp"-->
+<!--            android:textAllCaps="true"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:text="@string/app_name"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="@dimen/_12font_mdp"-->
+<!--            android:textStyle="bold|italic" />-->
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5mdp"
-                android:text="Monthly Details For"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12font_mdp"
-                android:textStyle="bold" />
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_5mdp"
-                android:layout_marginTop="@dimen/_5mdp"
-                android:layout_marginEnd="@dimen/_5mdp"
-                android:layout_marginBottom="@dimen/_5mdp"
                 android:background="@drawable/click_effect_gray_white"
                 android:elevation="@dimen/_3mdp"
                 android:paddingTop="@dimen/_5mdp"
                 android:paddingBottom="@dimen/_5mdp">
-
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+            <ImageView
+                android:id="@+id/changeView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                app:tint="@color/white"
+                android:layout_marginStart="@dimen/_10mdp"
+                android:src="@drawable/calendar_month_24"/>
+            <ImageView
+                android:id="@+id/logOut"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                app:tint="@color/white"
+                android:layout_marginStart="@dimen/_10mdp"
+                android:src="@drawable/logout_24"/>
         </LinearLayout>
-                <ImageView
-                    android:id="@+id/changeView"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    app:tint="@color/white"
-                    android:layout_marginStart="@dimen/_10mdp"
-                    android:layout_marginEnd="@dimen/_10mdp"
-                    android:src="@drawable/week_image_24"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/selectLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:padding="@dimen/_10mdp"
+        android:gravity="center"
+        android:background="@color/blue_purple"
+        android:visibility="gone"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/clear_all"
+            android:layout_width="@dimen/_22mdp"
+            android:layout_height="@dimen/_22mdp"
+            android:src="@drawable/close_24"/>
+        <ImageView
+            android:id="@+id/resetAll"
+            android:layout_width="@dimen/_20mdp"
+            android:layout_height="@dimen/_20mdp"
+            android:layout_marginStart="@dimen/_10mdp"
+            android:src="@drawable/delete_24"/>
+        <ImageView
+            android:id="@+id/pencilBooking"
+            android:layout_width="@dimen/_18mdp"
+            android:layout_height="@dimen/_18mdp"
+            app:tint="@color/white"
+            android:layout_marginStart="@dimen/_10mdp"
+            android:src="@drawable/pencil"/>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0 Selected"
+            android:textStyle="bold"
+            android:textSize="@dimen/_12font_mdp"
+            android:textColor="@color/yellow"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/done_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textStyle="bold"
+            android:textSize="@dimen/_10font_mdp"
+            android:paddingStart="@dimen/_8mdp"
+            android:paddingEnd="@dimen/_8mdp"
+            android:paddingTop="@dimen/_4mdp"
+            android:paddingBottom="@dimen/_4mdp"
+            android:background="@drawable/back_white_gray_click"/>
+
+<!--        <ImageView-->
+<!--            android:layout_width="@dimen/_24mdp"-->
+<!--            android:layout_height="@dimen/_24mdp"-->
+<!--            android:layout_marginStart="@dimen/_10mdp"-->
+<!--            android:src="@drawable/done_24"/>-->
     </LinearLayout>
     <LinearLayout
         android:id="@+id/optionMenu"
@@ -154,14 +219,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp">
+        android:layout_margin="@dimen/_10mdp">
 
         <ImageView
             android:id="@+id/previousDateBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
             android:onClick="previousWeekAction"
             android:padding="5dp"
             app:tint="@color/white"
@@ -174,7 +237,8 @@
             android:layout_weight="2"
             android:layout_height="wrap_content"
             android:text="Feb 2021"
-            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textSize="@dimen/_13font_mdp"
             android:textAlignment="center"
             android:textColor="@color/black"/>
 
@@ -183,7 +247,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:rotation="180"
-            android:layout_marginEnd="15dp"
             android:padding="5dp"
             app:tint="@color/white"
             android:background="@drawable/background_button_effect"

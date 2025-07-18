@@ -4,12 +4,13 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainBack"
     android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="5"
         android:orientation="horizontal"
         android:padding="@dimen/_5mdp">
         <TextView
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1\nSunday"
-            android:textSize="@dimen/_12font_mdp"
+            android:textSize="@dimen/_11font_mdp"
             android:gravity="center"
             android:textAllCaps="false"
             android:maxLines="2"

@@ -1,4 +1,4 @@
-package com.developerali.trackbookings;
+package com.trackbookings;
 
 import java.time.DayOfWeek;
 import java.time.Instant;
@@ -34,7 +34,7 @@ public class CalenderHelper {
         if (date == null){
             return "";
         }else {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
             return date.format(formatter);
         }
     }
