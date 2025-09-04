@@ -5,15 +5,21 @@ import static android.content.Context.MODE_PRIVATE;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,16 +29,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.browser.customtabs.CustomTabsClient;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.content.ContextCompat;
 
+import com.trackbookings.R;
 import com.trackbookings.databinding.CustomDialogBinding;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Helpers {
 
@@ -175,6 +187,61 @@ public class Helpers {
         editor.apply();
     }
 
+    public static boolean isChromeCustomTabsSupported(@NonNull final Context context) {
+        Intent serviceIntent = new Intent("android.support.customtabs.action.CustomTabsService");
+        serviceIntent.setPackage("com.android.chrome");
+        List<ResolveInfo> resolveInfos = context.getPackageManager().queryIntentServices(serviceIntent, 0);
+        return !resolveInfos.isEmpty();
+    }
+    public static void openChromeTab(String link, Activity activity) {
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        builder.setToolbarColor(ContextCompat.getColor(activity, R.color.blue_purple));
+        // Optional: Set dark icons for status bar consistency
+        builder.setColorScheme(CustomTabsIntent.COLOR_SCHEME_SYSTEM);
+        CustomTabsIntent customTabsIntent = builder.build();
+        // Set the preferred package if available
+        List<String> packageNames = new ArrayList<>();
+        Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        PackageManager pm = activity.getPackageManager();
+        List<ResolveInfo> resolveInfos = pm.queryIntentActivities(activityIntent, PackageManager.MATCH_ALL);
+        for (ResolveInfo info : resolveInfos) {
+            packageNames.add(info.activityInfo.packageName);
+        }
+        String packageName = CustomTabsClient.getPackageName(activity, packageNames, true);
+        if (packageName != null) {
+            customTabsIntent.intent.setPackage(packageName);
+        }
+        try {
+            customTabsIntent.launchUrl(activity, Uri.parse(link));
+        } catch (ActivityNotFoundException e) {
+            Log.e("CustomTabs", "Failed to launch Custom Tabs", e);
+            openLinkFallback(activity, link);
+        }
+    }
+
+    public static void openLink(Activity activity, String link) {
+        if (isChromeCustomTabsSupported(activity)) {
+            openChromeTab(link, activity);
+        } else {
+            openLinkFallback(activity, link);
+        }
+    }
+
+    private static void openLinkFallback(Activity activity, String link) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            if (intent.resolveActivity(activity.getPackageManager()) != null) {
+                activity.startActivity(intent);
+            } else {
+                Toast.makeText(activity, "No browser installed to open this link.", Toast.LENGTH_SHORT).show();
+            }
+        } catch (ActivityNotFoundException e) {
+            Log.e("OpenLink", "No activity found to handle ACTION_VIEW", e);
+            Toast.makeText(activity, "No browser installed to open this link.", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public static String getTextFromSharedPref(Activity activity, String key) {
         SharedPreferences sharedPreferences = activity.getSharedPreferences("MyPrefs", MODE_PRIVATE);

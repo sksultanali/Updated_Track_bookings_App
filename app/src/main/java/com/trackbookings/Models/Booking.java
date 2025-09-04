@@ -7,6 +7,7 @@ public class Booking {
     private int room_no;
     private int user_id;
     private String booking_name;
+    private String phone;
     private String remark;
     private String pax;
     private String due;
@@ -31,6 +32,10 @@ public class Booking {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public int getProperty_id() {

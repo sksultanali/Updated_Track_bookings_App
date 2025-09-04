@@ -199,6 +199,16 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
         });
 
         dialogBinding.idName.setText("By " + room.getBooking().getUser_name());
+        if (room.getBooking().getPhone() != null){
+            dialogBinding.whatsappBtn.setVisibility(View.VISIBLE);
+            dialogBinding.bookingPhone.setText(room.getBooking().getPhone());
+            dialogBinding.whatsappBtn.setOnClickListener(v->{
+                Helpers.openLink(activity, "https://wa.me/+91"+room.getBooking().getPhone());
+            });
+        }else {
+            dialogBinding.bookingPhone.setText("NA");
+            dialogBinding.whatsappBtn.setVisibility(View.GONE);
+        }
         dialogBinding.dateTime.setText(
                 Helpers.formatDate(room.getBooking().getDate(), "yyyyMMdd", "dd LLL, yyyy")
                         + " | Room No. "
@@ -225,6 +235,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
         dialogBinding.pax.setText(bPax);
         dialogBinding.due.setText(bDue);
 
+        dialogBinding.deleteBtn.setVisibility(View.GONE);
         dialogBinding.deleteBtn.setOnClickListener(v->{
             Helpers.showActionDialog(activity, "Delete?", "Are you sure want to delete this record?", "Delete",
                     null, true, new Helpers.DialogButtonClickListener() {
@@ -251,14 +262,17 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
         dialogBinding.bookingName.setEnabled(false);
         dialogBinding.due.setEnabled(false);
         dialogBinding.pax.setEnabled(false);
+        dialogBinding.bookingPhone.setEnabled(false);
 
         dialogBinding.bookingName.setTextColor(activity.getColor(R.color.icon_color));
         dialogBinding.pax.setTextColor(activity.getColor(R.color.icon_color));
         dialogBinding.due.setTextColor(activity.getColor(R.color.icon_color));
+        dialogBinding.bookingPhone.setTextColor(activity.getColor(R.color.icon_color));
 
         dialogBinding.pax.setBackground(activity.getDrawable(R.drawable.bg_gray_round_corner));
         dialogBinding.due.setBackground(activity.getDrawable(R.drawable.bg_gray_round_corner));
         dialogBinding.bookingName.setBackground(activity.getDrawable(R.drawable.bg_gray_round_corner));
+        dialogBinding.bookingPhone.setBackground(activity.getDrawable(R.drawable.bg_gray_round_corner));
 
         dialogBinding.saveBtn.setOnClickListener(v->{
             String remark = dialogBinding.remarks.getText().toString();

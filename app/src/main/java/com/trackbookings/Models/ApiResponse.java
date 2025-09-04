@@ -7,6 +7,7 @@ public class ApiResponse {
     private String room;
     private String roomId;
     private String message;
+    private String affected_rows;
     private boolean valid;
 
     // Getters
@@ -24,6 +25,10 @@ public class ApiResponse {
 
     public String getRoom() {
         return room;
+    }
+
+    public String getAffected_rows() {
+        return affected_rows;
     }
 
     public String getMessage() {

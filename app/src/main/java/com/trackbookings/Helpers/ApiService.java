@@ -29,7 +29,8 @@ public interface ApiService {
             @Query("booking_name")@Nullable String booking_name,
             @Query("pax")@Nullable String pax,
             @Query("due")@Nullable String due,
-            @Query("remark")@Nullable String remark
+            @Query("remark")@Nullable String remark,
+            @Query("phone")@Nullable String phone
     );
 
     @GET("apis/api.php?action=fetchBookings")

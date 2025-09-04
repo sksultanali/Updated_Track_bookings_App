@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                                                     "Yes", null, true, new Helpers.DialogButtonClickListener() {
                                                         @Override
                                                         public void onYesButtonClicked() {
-                                                            saveDate(selectedItems, days, booking, "PencilBooking", null, null, null);
+                                                            saveDate(selectedItems, days, booking, "PencilBooking", null, null, null, null);
                                                         }
 
                                                         @Override
@@ -371,6 +371,7 @@ public class MainActivity extends AppCompatActivity {
         dialogBinding.deleteBtn.setVisibility(View.GONE);
         dialogBinding.saveBtn.setOnClickListener(v -> {
             String bookingName = dialogBinding.bookingName.getText().toString();
+            String phone = dialogBinding.bookingPhone.getText().toString();
             String pax = dialogBinding.pax.getText().toString();
             String due = dialogBinding.due.getText().toString();
 
@@ -380,14 +381,14 @@ public class MainActivity extends AppCompatActivity {
             }
             String remark = dialogBinding.remarks.getText().toString();
             dialog.dismiss();
-            saveDate(selectedItems, days, booking, bookingName, remark, pax, due);
+            saveDate(selectedItems, days, booking, bookingName, remark, pax, due, phone);
         });
 
         dialog.show();
     }
 
     void saveDate(Map<LocalDate, ArrayList<String>> selectedItems,
-                  ArrayList<LocalDate> days, Booking booking, String bookingName, String remark, String pax, String due){
+                  ArrayList<LocalDate> days, Booking booking, String bookingName, String remark, String pax, String due, String phone){
         List<Call<ApiResponse>> apiCalls = new ArrayList<>();
         List<String> failedRooms = new ArrayList<>();
         List<String> successRooms = new ArrayList<>();
@@ -411,7 +412,8 @@ public class MainActivity extends AppCompatActivity {
                         bookingName,
                         pax,
                         due,
-                        remark
+                        remark,
+                        phone
                 );
                 apiCalls.add(call);
             }
