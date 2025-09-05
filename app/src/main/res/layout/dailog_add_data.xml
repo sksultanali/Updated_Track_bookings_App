@@ -92,7 +92,7 @@
             android:textColor="@color/icon_color"
             android:layout_marginTop="@dimen/_10mdp"
             android:layout_marginStart="@dimen/_2mdp"
-            android:text="Phone Number (Optional)"/>
+            android:text="Phone Number"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                     android:textSize="@dimen/_10font_mdp"
                     android:textColor="@color/icon_color"
                     android:layout_marginStart="@dimen/_2mdp"
-                    android:text="PAX (Optional)"/>
+                    android:text="PAX"/>
                 <EditText
                     android:id="@+id/pax"
                     android:layout_width="match_parent"
@@ -162,7 +162,7 @@
                     android:textSize="@dimen/_10font_mdp"
                     android:textColor="@color/icon_color"
                     android:layout_marginStart="@dimen/_2mdp"
-                    android:text="Due (Optional)"/>
+                    android:text="Due"/>
                 <EditText
                     android:id="@+id/due"
                     android:layout_width="match_parent"

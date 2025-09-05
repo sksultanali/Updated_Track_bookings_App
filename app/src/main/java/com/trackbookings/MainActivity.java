@@ -379,6 +379,18 @@ public class MainActivity extends AppCompatActivity {
                 dialogBinding.bookingName.setError("*");
                 return;
             }
+            if (phone.isEmpty()){
+                dialogBinding.bookingPhone.setError("*");
+                return;
+            }
+            if (pax.isEmpty()){
+                dialogBinding.pax.setError("*");
+                return;
+            }
+            if (due.isEmpty()){
+                dialogBinding.due.setError("*");
+                return;
+            }
             String remark = dialogBinding.remarks.getText().toString();
             dialog.dismiss();
             saveDate(selectedItems, days, booking, bookingName, remark, pax, due, phone);
